@@ -15,7 +15,22 @@ if is_ready == 'y':
     attempts=0
 
     while True:
-        inp = int(input("Guess a number between 1 and 100 [1,100]: "))
+        inp = input("Guess a number between 1 and 100 [1,100]: ")
+
+        # ensuring the entered number is integer, also ensuring that the program doesn't break on invalid inputs
+        try:
+            inp = int(inp)  # if ok, next line, otherwise go to except block
+            break           # will be executed only if above line executes safely
+        except: 
+            while True:
+                print("Oops!!, you entered something wrong. Try again.\n")
+                inp=input("Guess a number between 1 and 100 [1,100]: ")
+                try:
+                    inp = int(inp)
+                    break
+                except:
+                    continue
+
         attempts += 1
 
         if inp==r:
